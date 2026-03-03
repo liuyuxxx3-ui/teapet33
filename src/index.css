@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 旅行青蛙温馨风格配色 */
+    --background: 45 30% 95%;
+    --foreground: 30 15% 25%;
+    --card: 45 25% 98%;
+    --card-foreground: 30 15% 25%;
+    --popover: 45 25% 98%;
+    --popover-foreground: 30 15% 25%;
+    --primary: 85 35% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 35 40% 65%;
+    --secondary-foreground: 30 15% 25%;
+    --muted: 45 20% 90%;
+    --muted-foreground: 30 10% 50%;
+    --accent: 25 50% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 45 20% 85%;
+    --input: 45 20% 85%;
+    --ring: 85 35% 45%;
+    --radius: 1rem;
+    
+    /* 自定义颜色 - 旅行青蛙风格 */
+    --sage: #7A9E6E;
+    --wood: #C4A77D;
+    --cream: #F5F0E6;
+    --paper: #FFFEF8;
+    --brown: #5C4A3A;
+    --green: #8FBC6B;
+    --orange: #E8A87C;
+    --soft-blue: #A8C5D9;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* 移动端容器 */
+  .mobile-container {
+    @apply max-w-[430px] mx-auto min-h-screen relative overflow-hidden;
+    background: linear-gradient(180deg, #F5F0E6 0%, #EDE8DC 100%);
+  }
+  
+  /* 温馨卡片风格 */
+  .cozy-card {
+    @apply bg-white/90 rounded-2xl shadow-sm;
+    border: 2px solid #E8E2D5;
+  }
+  
+  /* 木质按钮 */
+  .wood-btn {
+    @apply relative overflow-hidden transition-all duration-300;
+    background: linear-gradient(180deg, #C4A77D 0%, #B0956D 100%);
+    box-shadow: 0 4px 0 #9A8058, 0 6px 10px rgba(0,0,0,0.1);
+  }
+  
+  .wood-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #9A8058, 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* 绿色按钮 */
+  .leaf-btn {
+    @apply relative overflow-hidden transition-all duration-300;
+    background: linear-gradient(180deg, #8FBC6B 0%, #7AA857 100%);
+    box-shadow: 0 4px 0 #5E8A3D, 0 6px 10px rgba(0,0,0,0.1);
+  }
+  
+  .leaf-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #5E8A3D, 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* 磨砂玻璃效果 */
+  .glass {
+    @apply backdrop-blur-md bg-white/80;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  /* 呼吸动画 */
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+  
+  .animate-breathe {
+    animation: breathe 3s ease-in-out infinite;
+  }
+  
+  /* 悬浮动画 */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 2.5s ease-in-out infinite;
+  }
+  
+  /* 卡片悬浮效果 */
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  
+  .card-hover:hover {
+    @apply shadow-lg;
+    transform: translateY(-3px);
+  }
+  
+  /* 滚动条样式 */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--sage);
+    border-radius: 2px;
+  }
+  
+  /* 隐藏滚动条 */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* 手绘边框 */
+  .hand-drawn-border {
+    border: 3px solid #C4A77D;
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  .hand-drawn-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border: 2px solid #E8E2D5;
+    border-radius: 22px;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* 安全区域 */
+  .pb-safe {
+    padding-bottom: max(env(safe-area-inset-bottom), 70px);
+  }
+  
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+}
